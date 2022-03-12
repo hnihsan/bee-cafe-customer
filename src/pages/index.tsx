@@ -135,7 +135,7 @@ export default function Home({}: Props) {
 
   return (
     <div>
-      <div className="container bg-white shadow rounded-lg mt-16  p-8 flex gap-x-5">
+      <div className="container bg-white shadow rounded-lg mt-16 p-8 flex gap-x-5 w-full">
         <aside className="w-2/12 overflow-auto " style={{ maxHeight: '70vh' }}>
           <ul className="list-none">
             {datas.map(({ category }, index) => (
@@ -192,7 +192,7 @@ export default function Home({}: Props) {
                       />
 
                       <div className="meta">
-                        <p className="mt-3 px-3 text-xl text-white">
+                        <p className="mt-3 px-3 text-lg text-white">
                           IDR {formatRupiah(item?.price ?? 0)}
                         </p>
                       </div>
