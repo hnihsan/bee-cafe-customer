@@ -50,14 +50,14 @@ function Receipt({ orders }: Props) {
   return (
     <>
       <div
-        className="absolute bottom-10 right-10 rounded"
+        className="absolute bottom-10 right-10 rounded animate-pulse"
         style={{ maxHeight: '75vh' }}
       >
         <button
           className="text-black px-4 w-auto h-12 bg-gray-100 rounded-full hover:bg-gray-300 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
           onClick={() => setIsShowReceipt(!isShowReceipt)}
         >
-          <span>Checkout (4 items)</span>
+          <span>Checkout ({orders.length} items)</span>
         </button>
       </div>
 
