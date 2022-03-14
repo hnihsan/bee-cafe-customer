@@ -145,14 +145,16 @@ export default function Home({}: Props) {
   }
   return (
     <div>
-      <div className="container bg-white shadow rounded-lg mt-16 w-2/3">
-        <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
-          <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 0 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="0" data-tabs="customer" onClick={handleTabSwitch}>Customer Info</a></li>
-          <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 1 ? "-mb-px border-b-4 border-blue-400" : "")}> &gt; </li>
-          <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 1 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="1" data-tabs="tables" onClick={handleTabSwitch}>Choose Table</a></li>
-          <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 2 ? "-mb-px border-b-4 border-blue-400" : "")}> &gt; </li>
-          <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 2 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="2" data-tabs="menus" onClick={handleTabSwitch}>Main Menu</a></li>
-        </ul>
+      <div className="container bg-white shadow rounded-lg mt-16 w-2/3 flex justify-center">
+        <div className="w-full max-w-lg">
+          <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
+            <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 0 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="0" data-tabs="customer" onClick={handleTabSwitch}>Customer Info</a></li>
+            <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 1 ? "-mb-px border-b-4 border-blue-400" : "")}> &gt; </li>
+            <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 1 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="1" data-tabs="tables" onClick={handleTabSwitch}>Choose Table</a></li>
+            <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 2 ? "-mb-px border-b-4 border-blue-400" : "")}> &gt; </li>
+            <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 2 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="2" data-tabs="menus" onClick={handleTabSwitch}>Main Menu</a></li>
+          </ul>
+        </div>
       </div>
       <div className="container bg-white shadow rounded-lg mt-4 p-8">
         <div className={"flex justify-center "+ (selectedTab === "customer" ? "" : "hidden")} id="customerID">
