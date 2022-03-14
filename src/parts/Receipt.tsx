@@ -2,6 +2,7 @@ import Img from '@components/Img/Img';
 import React, { useEffect, useRef, useState } from 'react';
 
 import formatRupiah from '@helpers/formatRupiah';
+import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
 type Props = {
   orders: any,
   customer: string,
@@ -11,6 +12,13 @@ type Props = {
 function Receipt({ orders, customer, tableNo }: Props) {
   const [summary, setSummary] = useState(null);
   const [isShowReceipt, setIsShowReceipt] = useState(false);
+  const [payload, setPayload] = useState([]);
+  const [reference, setReference] = useState('');
+  const [openSwarmModal, setOpenSwarmModal] = useState(false);
+
+  useEffect(() => {
+    setReference('SampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuh')
+  })
 
   useEffect(() => {
     let total = 0;
@@ -29,12 +37,14 @@ function Receipt({ orders, customer, tableNo }: Props) {
   }, [orders]);
 
   const handlerSubmit = () => {
-    const payload = {
+    let orderSummary = {
       orders,
       ...summary,
       customer,
       tableNo
     };
+    setPayload(orderSummary);
+    setOpenSwarmModal(true);
     console.log(payload);
   };
 
@@ -131,6 +141,14 @@ function Receipt({ orders, customer, tableNo }: Props) {
           </>
         )}
       </div>
+
+      <SwarmReferenceModal
+          isOpen={openSwarmModal}
+          shouldCloseOnOverlayClick={false}
+          referenceCode={reference}
+          payload={payload}
+          onRequestClose={() => setOpenSwarmModal(false)}
+        />
     </>
   );
 }
