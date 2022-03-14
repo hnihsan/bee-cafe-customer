@@ -26,9 +26,11 @@ export default function ConfirmQtyModal({
 }: ModalProps) {
   const [qty, setQty] = useState(1);
   const [total, setTotal] = useState(0);
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     setQty(1);
+    setNotes("");
 
     if (orders.length > 0) {
       const isExist = orders.filter((order) => {
@@ -41,6 +43,7 @@ export default function ConfirmQtyModal({
         );
 
         setQty(orders[index].qty);
+        setNotes(orders[index].notes);
       }
     }
   }, [isOpen, orders, data]);
@@ -61,11 +64,16 @@ export default function ConfirmQtyModal({
     setTotal(data?.price * qty);
   };
 
+  const handleNotes = (event) => {
+    setNotes(event.target.value)
+  }
+
   const handlerSubmit = () => {
     const payload = {
       item: data,
       qty,
       subtotal: total,
+      notes: notes
     };
 
     onSubmit(payload);
@@ -141,7 +149,12 @@ export default function ConfirmQtyModal({
               </div>
               <h4 className="text-lg font-bold">IDR {formatRupiah(total)}</h4>
             </div>
-
+            <textarea
+              className="mt-3 h-24 w-full border rounded-xl overflow-hidden resize-none focus:border-blue-500 ring-1 ring-transparent focus:ring-blue-500 focus:outline-none text-black p-2 transition ease-in-out duration-300"
+              placeholder="Add notes to your order . . ."
+              value={notes}
+              onChange={handleNotes}
+            />
             <button
               className="mt-5 border p-4 w-full rounded text-white bg-green-500 font-bold"
               onClick={handlerSubmit}
