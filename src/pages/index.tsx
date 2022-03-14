@@ -113,6 +113,8 @@ export default function Home({}: Props) {
     },
   ];
 
+  const tablesNo = [...Array(25).keys()]
+
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orders, setOrders] = useState([]);
@@ -145,7 +147,7 @@ export default function Home({}: Props) {
   }
   return (
     <div>
-      <div className="container bg-white shadow rounded-lg mt-16 w-2/5 flex justify-center">
+      <div className="container bg-white shadow rounded-lg mt-16 w-1/2 flex justify-center">
         <div className="w-full max-w-lg">
           <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
             <li className={"px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50" + (tabIndex >= 0 ? "-mb-px border-b-4 border-blue-400" : "")}><a className='tabs-navigation' data-tabindex="0" data-tabs="customer" onClick={handleTabSwitch}>Customer Info</a></li>
@@ -178,7 +180,31 @@ export default function Home({}: Props) {
           </div>
         </div>
         <div className={selectedTab === "tables" ? "" : "hidden"} id="tableNo">
-          <h1>Choose table section</h1>
+          <div
+            className="w-12/12 overflow-auto p-4"
+            style={{ maxHeight: '70vh', height: '70vh' }}
+          >
+            <div className="grid grid-cols-5 gap-4">
+              {tablesNo.map((item, index) => (
+                  <div
+                    className="border rounded-md cursor-pointer hover:shadow-md"
+                    style={{
+                      height: '150px',
+                      width: '150px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    onClick={() => {
+                      console.log("Table no: "+ (item + 1))
+                    }}
+                    key={index}
+                  >
+                    <h1>{index}</h1>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
         <div className={"flex gap-x-5 w-full " + (selectedTab === "menus" ? "" : "hidden")} id="menuOrders">
           <aside className="w-2/12 overflow-auto " style={{ maxHeight: '70vh' }}>
