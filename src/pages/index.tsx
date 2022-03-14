@@ -112,9 +112,8 @@ export default function Home({}: Props) {
       items: [],
     },
   ];
-
-  const tablesNo = [...Array(25).keys()]
-
+  const tablesNo = [...Array(25).keys()];
+  const [selectedTable, setSelectedTable] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orders, setOrders] = useState([]);
@@ -187,7 +186,7 @@ export default function Home({}: Props) {
             <div className="grid grid-cols-5 gap-4">
               {tablesNo.map((item, index) => (
                   <div
-                    className="border rounded-md cursor-pointer hover:shadow-md"
+                    className={"relative border rounded-md cursor-pointer hover:shadow-md " + (selectedTable == (item+1) && "border-4 border-green-300 rounded-lg")}
                     style={{
                       height: '150px',
                       width: '150px',
@@ -196,11 +195,23 @@ export default function Home({}: Props) {
                       justifyContent: 'center',
                     }}
                     onClick={() => {
-                      console.log("Table no: "+ (item + 1))
+                      console.log("Table no: "+ (item + 1));
+                      setSelectedTable(item+1)
                     }}
                     key={index}
                   >
-                    <h1>{index}</h1>
+                    <button className={"absolute flex items-center justify-center gap-2 transition-all bg-green-300 w-8 h-8 rounded-br-lg top-0 left-0 " + (selectedTable == (item+1) ? "" : "hidden")}>
+                      <div className="absolute w-10 h-10 z-10">
+                        <Img
+                          src="/images/icon-checklist.png"
+                          height="100%"
+                          width="100%"
+                          alt={"Table No. " + (item+1)}
+                          classname="object-cover rounded-tl-md rounded-tr-md"
+                        />
+                      </div>
+                    </button>
+                    <h1>{item+1}</h1>
                   </div>
                 ))}
             </div>
