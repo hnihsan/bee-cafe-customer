@@ -116,6 +116,7 @@ export default function Home({}: Props) {
   const tablesNumbers = [...Array(25).keys()];
   const [selectedTable, setSelectedTable] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItemCategory, setSelectedItemCategory] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [orders, setOrders] = useState([]);
@@ -141,14 +142,7 @@ export default function Home({}: Props) {
   const handleTabSwitch = (event: React.MouseEvent) => {
     event.preventDefault();
     setSelectedTab(event.currentTarget.getAttribute('data-tabs'));
-    console.log(
-      'Selected Tab:' + event.currentTarget.getAttribute('data-tabs')
-    );
-
     setTabIndex(+event.currentTarget.getAttribute('data-tabIndex'));
-    console.log(
-      'Selected Index:' + +event.currentTarget.getAttribute('data-tabindex')
-    );
   };
 
   const handleCustomerInput = (event) => {
@@ -292,7 +286,6 @@ export default function Home({}: Props) {
                     justifyContent: 'center',
                   }}
                   onClick={() => {
-                    console.log('Table no: ' + (item + 1));
                     setSelectedTable(item + 1);
                   }}
                   key={index}
@@ -356,6 +349,7 @@ export default function Home({}: Props) {
                     className="border rounded-md cursor-pointer hover:shadow-md relative"
                     onClick={() => {
                       setSelectedItem(item);
+                      setSelectedItemCategory(datas[selectedCurrentIndex].category);
                       setIsModalOpen(true);
                     }}
                     key={index}
@@ -410,6 +404,7 @@ export default function Home({}: Props) {
         <ConfirmQtyModal
           orders={orders}
           data={selectedItem}
+          category={selectedItemCategory}
           isOpen={isModalOpen}
           onRequestClose={() => setIsModalOpen(false)}
           onSubmit={(payload) => {

@@ -11,6 +11,7 @@ interface ModalProps {
   isOpen: boolean;
   shouldCloseOnOverlayClick?: boolean;
   data: any;
+  category: string;
   orders: any;
   onSubmit: (paylaod: any) => void;
   onRequestClose: () => void;
@@ -20,6 +21,7 @@ export default function ConfirmQtyModal({
   isOpen,
   shouldCloseOnOverlayClick,
   data,
+  category,
   orders,
   onSubmit,
   onRequestClose,
@@ -70,6 +72,7 @@ export default function ConfirmQtyModal({
 
   const handlerSubmit = () => {
     const payload = {
+      category: category,
       item: data,
       qty,
       subtotal: total,
