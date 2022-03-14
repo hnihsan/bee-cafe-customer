@@ -3,10 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import formatRupiah from '@helpers/formatRupiah';
 type Props = {
-  orders: any;
+  orders: any,
+  customer: string,
+  tableNo: Number | null
 };
 
-function Receipt({ orders }: Props) {
+function Receipt({ orders, customer, tableNo }: Props) {
   const [summary, setSummary] = useState(null);
   const [isShowReceipt, setIsShowReceipt] = useState(false);
 
@@ -30,6 +32,8 @@ function Receipt({ orders }: Props) {
     const payload = {
       orders,
       ...summary,
+      customer,
+      tableNo
     };
     console.log(payload);
   };

@@ -112,10 +112,11 @@ export default function Home({}: Props) {
       items: [],
     },
   ];
-  const tablesNo = [...Array(25).keys()];
+  const tablesNumbers = [...Array(25).keys()];
   const [selectedTable, setSelectedTable] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customerName, setCustomerName] = useState('');
   const [orders, setOrders] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedTab, setSelectedTab] = useState('customer');
@@ -144,6 +145,15 @@ export default function Home({}: Props) {
     setTabIndex(+event.currentTarget.getAttribute("data-tabIndex"));
     console.log("Selected Index:" + (+event.currentTarget.getAttribute("data-tabindex")));
   }
+
+  const handleCustomerInput = (event) => {
+    setCustomerName(event.currentTarget.value)
+  }
+
+  const handleSubmitCustomer = (event) => {
+    setTabIndex(1); setSelectedTab('tables')
+  }
+
   return (
     <div>
       <div className="container bg-white shadow rounded-lg mt-16 w-1/2 flex justify-center">
@@ -165,10 +175,10 @@ export default function Home({}: Props) {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                   Welcome to Bee Cafe, what can we call you?
                 </label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter your name" />
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter your name" value={customerName} onChange={handleCustomerInput} />
               </div>
               <div className="flex items-center justify-between">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleSubmitCustomer}>
                   Let's go!
                 </button>
               </div>
@@ -184,7 +194,7 @@ export default function Home({}: Props) {
             style={{ maxHeight: '70vh', height: '70vh' }}
           >
             <div className="grid grid-cols-5 gap-4">
-              {tablesNo.map((item, index) => (
+              {tablesNumbers.map((item, index) => (
                   <div
                     className={"relative border rounded-md cursor-pointer hover:shadow-md " + (selectedTable == (item+1) && "border-4 border-green-300 rounded-lg")}
                     style={{
@@ -309,7 +319,11 @@ export default function Home({}: Props) {
         />
       )}
 
-      {orders.length > 0 && <Receipt orders={orders} />}
+      { orders.length > 0 &&
+        <Receipt customer={customerName}
+          tableNo={selectedTable}
+          orders={orders} />
+      }
     </div>
   );
 }
