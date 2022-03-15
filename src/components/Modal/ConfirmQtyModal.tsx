@@ -159,7 +159,7 @@ export default function ConfirmQtyModal({
               onChange={handleNotes}
             />
             <button
-              className="mt-5 border p-4 w-full rounded text-white bg-green-500 font-bold"
+              className="mt-5 border p-4 w-full rounded text-white bg-bee-main font-bold"
               onClick={handlerSubmit}
             >
               CONFIRM

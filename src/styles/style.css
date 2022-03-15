@@ -5,7 +5,7 @@
 
 main {
   min-height: 100vh;
-  background-color: black;
+  background-color: #fdffa9;
 }
 
 figure:hover .meta {
@@ -41,4 +41,22 @@ input[type='number']::-webkit-outer-spin-button {
 
 .tabs-navigation:hover{
   cursor: pointer;
+}
+
+.bg-bee-main{
+  background-color: #FFB72B;
+}
+
+.bg-bee-secondary{
+  background-color: #fdffa9;
+}
+
+.border-bee-main{
+  --tw-border-opacity: 1;
+  border-color: #FFB72B;
+}
+
+.text-hover-bee-main:hover{
+  --tw-text-opacity: 1;
+  color: #FFB72B;
 }

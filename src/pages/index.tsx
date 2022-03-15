@@ -1,6 +1,6 @@
 import Img from '@components/Img/Img';
 import React, { useState } from 'react';
-
+import { FaCheck } from 'react-icons/fa';
 import formatCurrency from '@helpers/formatCurrency';
 import ConfirmQtyModal from '@components/Modal/ConfirmQtyModal';
 import Receipt from '@parts/Receipt';
@@ -175,13 +175,13 @@ export default function Home({}: Props) {
 
   return (
     <div>
-      <div className="container bg-white shadow rounded-lg mt-16 w-1/2 flex justify-center">
+      <div className="container bg-white drop-shadow-md rounded-lg mt-16 w-1/2 flex justify-center">
         <div className="w-full max-w-lg">
           <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
             <li
               className={
                 'px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50' +
-                (tabIndex >= 0 ? '-mb-px border-b-4 border-blue-400' : '')
+                (tabIndex >= 0 ? '-mb-px border-b-4 border-bee-main' : '')
               }
             >
               <a
@@ -196,7 +196,7 @@ export default function Home({}: Props) {
             <li
               className={
                 'px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50' +
-                (tabIndex >= 1 ? '-mb-px border-b-4 border-blue-400' : '')
+                (tabIndex >= 1 ? '-mb-px border-b-4 border-bee-main' : '')
               }
             >
               {' '}
@@ -205,7 +205,7 @@ export default function Home({}: Props) {
             <li
               className={
                 'px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50' +
-                (tabIndex >= 1 ? '-mb-px border-b-4 border-blue-400' : '')
+                (tabIndex >= 1 ? '-mb-px border-b-4 border-bee-main' : '')
               }
             >
               <a
@@ -220,7 +220,7 @@ export default function Home({}: Props) {
             <li
               className={
                 'px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50' +
-                (tabIndex >= 2 ? '-mb-px border-b-4 border-blue-400' : '')
+                (tabIndex >= 2 ? '-mb-px border-b-4 border-bee-main' : '')
               }
             >
               {' '}
@@ -229,7 +229,7 @@ export default function Home({}: Props) {
             <li
               className={
                 'px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50' +
-                (tabIndex >= 2 ? '-mb-px border-b-4 border-blue-400' : '')
+                (tabIndex >= 2 ? '-mb-px border-b-4 border-bee-main' : '')
               }
             >
               <a
@@ -244,7 +244,7 @@ export default function Home({}: Props) {
           </ul>
         </div>
       </div>
-      <div className="container bg-white shadow rounded-lg mt-4 p-8">
+      <div className="container bg-white drop-shadow-md rounded-lg mt-4 p-8">
         <div
           className={
             'flex justify-center ' +
@@ -292,7 +292,7 @@ export default function Home({}: Props) {
                   className={
                     'relative border rounded-md cursor-pointer hover:shadow-md ' +
                     (selectedTable == item + 1 &&
-                      'border-4 border-green-300 rounded-lg font-bold')
+                      'border-4 border-bee-main rounded-lg font-bold')
                   }
                   style={{
                     height: '150px',
@@ -308,18 +308,12 @@ export default function Home({}: Props) {
                 >
                   <button
                     className={
-                      'absolute flex items-center justify-center gap-2 transition-all bg-green-300 w-8 h-8 rounded-br-lg top-0 left-0 ' +
+                      'absolute flex items-center justify-center gap-2 transition-all bg-bee-main w-8 h-8 rounded-br-lg top-0 left-0 ' +
                       (selectedTable == item + 1 ? '' : 'hidden')
                     }
                   >
-                    <div className="absolute w-10 h-10 z-10">
-                      <Img
-                        src="/images/icon-checklist.png"
-                        height="100%"
-                        width="100%"
-                        alt={'Table No. ' + (item + 1)}
-                        classname="object-cover rounded-tl-md rounded-tr-md"
-                      />
+                    <div className="justify-center flex items-center w-20 h-20 z-10">
+                      <FaCheck className="text-white" />
                     </div>
                   </button>
                   <h1>{item + 1}</h1>
@@ -342,9 +336,9 @@ export default function Home({}: Props) {
               {datas.map(({ category }, index) => (
                 <li
                   key={index}
-                  className={`p-3 first-letter:uppercase  cursor-pointer hover:text-red-100 transition-all duration-75 ${
+                  className={`p-3 first-letter:uppercase  cursor-pointer text-hover-bee-main transition-all duration-75 ${
                     selectedCurrentIndex === index
-                      ? 'border rounded bg-gray-500 text-white hover:text-white'
+                      ? 'border rounded bg-bee-main text-white hover:text-white'
                       : ''
                   }`}
                   onClick={() => setSelectedCurrentIndex(index)}

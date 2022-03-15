@@ -132,7 +132,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
 
             <div className="mt-3">
               <button
-                className="border rounded bg-green-500 w-full py-2 text-white"
+                className="border rounded bg-bee-main w-full py-2 text-white"
                 onClick={handlerSubmit}
               >
                 ORDER
