@@ -1,5 +1,6 @@
 import Img from '@components/Img/Img';
 import React, { useEffect, useRef, useState } from 'react';
+import { BeeDebug, Bee } from "@ethersphere/bee-js"
 
 import formatCurrency from '@helpers/formatCurrency';
 import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
@@ -15,10 +16,15 @@ function Receipt({ orders, customer, tableNo }: Props) {
   const [payload, setPayload] = useState([]);
   const [reference, setReference] = useState('');
   const [openSwarmModal, setOpenSwarmModal] = useState(false);
+  const [orderLoading, setOrderLoading] = useState(false);
 
-  useEffect(() => {
-    setReference('SampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuh')
-  })
+  const beeUrl = "http://localhost:1633";
+  const beeDebugUrl = "http://localhost:1635";
+  const POSTAGE_STAMPS_AMOUNT = 10000
+  const POSTAGE_STAMPS_DEPTH = 17
+
+  const beeDebug = new BeeDebug(beeDebugUrl);
+  const bee = new Bee(beeUrl);
 
   useEffect(() => {
     let total = 0;
@@ -36,13 +42,22 @@ function Receipt({ orders, customer, tableNo }: Props) {
     });
   }, [orders]);
 
-  const handlerSubmit = () => {
+  const handlerSubmit = async () => {
+    setOrderLoading(true);
     let orderSummary = {
       orders,
       ...summary,
       customer,
       tableNo
     };
+
+    const ps = await beeDebug.getAllPostageBatch()
+    let usableStamps = ps.filter((stamp) => { return stamp.usable;});
+    let batchID = usableStamps[0].batchID;
+    const { reference } = await bee.uploadData(batchID, JSON.stringify(orderSummary));
+    setReference(reference);
+    setOrderLoading(false);
+
     setPayload(orderSummary);
     setOpenSwarmModal(true);
     console.log(orderSummary);
@@ -132,10 +147,10 @@ function Receipt({ orders, customer, tableNo }: Props) {
 
             <div className="mt-3">
               <button
-                className="border rounded bg-bee-main w-full py-2 text-white"
+                className={"border rounded w-full py-2 text-white " + (orderLoading ? 'bg-gray-500' : 'bg-bee-main')}
                 onClick={handlerSubmit}
               >
-                ORDER
+                { orderLoading ? 'PROCESSING ..' : 'ORDER'}
               </button>
             </div>
           </>
