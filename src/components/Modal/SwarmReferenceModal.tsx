@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactJson from 'react-json-view'
 
 
@@ -47,10 +47,10 @@ export default function SwarmReferenceModal({
             <div className='w-full border rounded-xl h-24 mt-2'>
               <p className='break-words mx-3 my-3 text-lg font-bold'>{referenceCode}</p>
             </div>
-            <div className='mt-5'>
+            {/* <div className='mt-5'>
               <p className='mb-2'>Uploaded data to SWARM Preview :</p>
               <ReactJson src={payload} collapseStringsAfterLength={25} name={"payload"} collapsed={true} />
-            </div>
+            </div> */}
           </div>
         </BodyModal>
       </ContainerModal>

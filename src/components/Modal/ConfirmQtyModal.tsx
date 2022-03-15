@@ -117,7 +117,7 @@ export default function ConfirmQtyModal({
               <div className="detail">
                 <h2 className="font-medium text-base my-2">{data?.name}</h2>
                 <h3 className="text-lg font-bold">
-                  IDR {formatRupiah(data?.price ?? 0)}
+                  $ {formatRupiah(data?.price ?? 0)}
                   <span className="ml-1 text-xs">x {qty}</span>
                 </h3>
 
@@ -150,7 +150,7 @@ export default function ConfirmQtyModal({
                   </div>
                 </div>
               </div>
-              <h4 className="text-lg font-bold">IDR {formatRupiah(total)}</h4>
+              <h4 className="text-lg font-bold">$ {formatRupiah(total)}</h4>
             </div>
             <textarea
               className="mt-3 h-24 w-full border rounded-xl overflow-hidden resize-none focus:border-blue-500 ring-1 ring-transparent focus:ring-blue-500 focus:outline-none text-black p-2 transition ease-in-out duration-300"

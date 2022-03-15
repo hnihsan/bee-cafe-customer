@@ -14,109 +14,129 @@ export default function Home({}: Props) {
       category: 'coffee',
       items: [
         {
-          name: 'Expresso',
-          price: '7000',
+          name: 'Long Black',
+          price: '8',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-7-0.gateway.ethswarm.org/bzz/5abacee1baae3bc810b9213728db2d9d43674bfa1f5472315ebef75cb6e0d3ce/',
         },
         {
-          name: 'Double Expresso',
-          price: '10000',
+          name: 'Caramel Macchiato',
+          price: '10',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-8-0.gateway.ethswarm.org/bzz/cac57098810ea60163e02fcfe017c207fd86ae99cff4001645fa171e6c4db5c7/',
         },
         {
-          name: 'Cappacino',
-          price: '8000',
+          name: 'Cold Brew',
+          price: '8',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-3-0.gateway.ethswarm.org/bzz/327630f7255c28418cac74235a4e2ed26e686aadda433a8cceeb815b497b2dd7/',
         },
         {
-          name: 'Latte',
-          price: '8000',
+          name: 'Vanilla / Hazelnut / Caramel Latte',
+          price: '10',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        },
-        {
-          name: 'Americano',
-          price: '5000',
-          image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-5-0.gateway.ethswarm.org/bzz/a166cf2368528e75a0bb067c2641cfa6e0652e73b8a9919691e1c08453812645/',
         },
         {
           name: 'Mocha',
-          price: '8000',
+          price: '9',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-9-0.gateway.ethswarm.org/bzz/9c655539b6e599717ad241aaeed6714141d8f363877382ba00515f3ae2fcc83e/',
         },
         {
-          name: 'Flat White',
-          price: '3000',
+          name: 'Americano',
+          price: '8',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        },
-        {
-          name: 'Short Black',
-          price: '3000',
-          image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        },
-        {
-          name: 'Long Black',
-          price: '3000',
-          image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        },
+            'https://gateway-proxy-bee-4-0.gateway.ethswarm.org/bzz/fd13139e112ad218a0c6d11f77c8ae370e01f0f59a36a390206b01f0c409c9dd/',
+        }
       ],
     },
     {
       category: 'teas',
       items: [
         {
-          name: 'White',
-          price: '2000',
+          name: 'Black Tea',
+          price: '7',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-2-0.gateway.ethswarm.org/bzz/f7ce35d89b4404d4b1230511c31566704add994e95f4e21ea291c15a206bda78/',
         },
         {
-          name: 'Green',
-          price: '2000',
+          name: 'Green Tea',
+          price: '7',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-1-0.gateway.ethswarm.org/bzz/a8d06e2dd8189704d674d846eda871919d95eece82c1641bcefd91145e51c424/',
         },
         {
-          name: 'Black',
-          price: '3000',
+          name: 'Jasmine Tea',
+          price: '7',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-3-0.gateway.ethswarm.org/bzz/593c63e1657c5d0d5dbf37131ae44eb0ec8166b3233026fcd9c1f1942b3e093f/',
         },
         {
-          name: 'Oolong',
-          price: '4000',
+          name: 'Oolong Tea',
+          price: '7',
           image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-        },
-        {
-          name: 'Puer',
-          price: '3000',
-          image:
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+            'https://gateway-proxy-bee-8-0.gateway.ethswarm.org/bzz/c35bb740435378f5bb4222d6111861816ed82ea3842c33c33c3053e28cf851c2/',
         },
       ],
     },
     {
-      category: 'bakery',
-      items: [],
+      category: 'juices',
+      items: [
+        {
+          name: 'Mango Passion Fruit',
+          price: '8',
+          image:
+            'https://gateway-proxy-bee-2-0.gateway.ethswarm.org/bzz/a293c51025afe75dc6c98945577ab33776779a5d0005f240ad8cc6251b038669/',
+        },
+        {
+          name: 'Raspberry Black Currant',
+          price: '8',
+          image:
+            'https://gateway-proxy-bee-1-0.gateway.ethswarm.org/bzz/f837296b3ba8ef8d286cc211fe65676f2b77732dfc59f61eedc6c76877b3ece7/',
+        },
+      ],
     },
     {
-      category: 'sandwiches',
-      items: [],
+      category: 'breakfasts',
+      items: [
+        {
+          name: 'Blueberry / Strawberry Waffle',
+          price: '10',
+          image:
+            'https://gateway-proxy-bee-8-0.gateway.ethswarm.org/bzz/fe619e36209844c621453e9fbea6eef4a3a786c4ccab638b9da14b79b1890481/',
+        },
+        {
+          name: 'Scrambled Egg & Bacon',
+          price: '15',
+          image:
+            'https://gateway-proxy-bee-2-0.gateway.ethswarm.org/bzz/8c90a5c6b3378bd1bc1c1ccc403d05b4ca1c4a02cfa7ef0996f56affed7c0c1c/',
+        },
+        {
+          name: 'All-in-one Sandwich',
+          price: '15',
+          image:
+            'https://gateway-proxy-bee-7-0.gateway.ethswarm.org/bzz/3a282c0fd97005214938a889931829683d517ef86f6347619d7229934bb4ae52/',
+        },
+        {
+          name: 'Salad',
+          price: '10',
+          image:
+            'https://gateway-proxy-bee-1-0.gateway.ethswarm.org/bzz/5a2e92b3681b4756195dfc6ea7c195146f4c2481ba60b8502de7e51cbc286a3c/',
+        },
+        {
+          name: 'Full English Breakfast',
+          price: '20',
+          image:
+            'https://gateway-proxy-bee-3-0.gateway.ethswarm.org/bzz/885832813ae859eeb9145ff0cd696774aaf27691ce93ad1c4511e37c4b7ced0b/',
+        },
+      ],
     },
   ];
   const tablesNumbers = [...Array(25).keys()];
   const [selectedTable, setSelectedTable] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedItemCategory, setSelectedItemCategory] = useState('');
+  const [selectedItemCategory, setSelectedItemCategory] = useState('coffee');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customerName, setCustomerName] = useState('');
   const [orders, setOrders] = useState([]);
@@ -379,7 +399,7 @@ export default function Home({}: Props) {
 
                         <div className="meta">
                           <p className="mt-3 px-3 text-lg text-white">
-                            IDR {formatRupiah(item?.price ?? 0)}
+                            $ {formatRupiah(item?.price ?? 0)}
                           </p>
                         </div>
                       </div>

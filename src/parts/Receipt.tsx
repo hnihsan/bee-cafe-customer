@@ -45,7 +45,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
     };
     setPayload(orderSummary);
     setOpenSwarmModal(true);
-    console.log(payload);
+    console.log(orderSummary);
   };
 
   const carts = useRef(null);
@@ -102,11 +102,11 @@ function Receipt({ orders, customer, tableNo }: Props) {
                   <div className="detail">
                     <h3 className="text-sm">{order.item?.name ?? '-'}</h3>
                     <p className="text-xs">
-                      {order.qty ?? 0} x IDR{' '}
+                      {order.qty ?? 0} x ${' '}
                       {formatRupiah(order.item?.price ?? 0)}
                     </p>
                     <p className="text-xs font-bold mt-5">
-                      IDR {formatRupiah(order.item?.price * order.qty)}
+                      $ {formatRupiah(order.item?.price * order.qty)}
                     </p>
                   </div>
                 </div>
@@ -116,16 +116,16 @@ function Receipt({ orders, customer, tableNo }: Props) {
             <div className="p-2 text-sm">
               <div className="flex justify-between">
                 <h3>Total</h3>
-                <p>IDR {formatRupiah(summary?.total ?? 0)}</p>
+                <p>$ {formatRupiah(summary?.total ?? 0)}</p>
               </div>
               <div className="flex justify-between">
                 <h3>Tax (10%)</h3>
-                <p>IDR {formatRupiah(summary?.tax ?? 0)}</p>
+                <p>$ {formatRupiah(summary?.tax ?? 0)}</p>
               </div>
               <div className="flex justify-between">
                 <h3>Grand Total</h3>
                 <p className="font-bold">
-                  IDR {formatRupiah(summary?.grandTotal ?? 0)}
+                  $ {formatRupiah(summary?.grandTotal ?? 0)}
                 </p>
               </div>
             </div>
@@ -142,13 +142,15 @@ function Receipt({ orders, customer, tableNo }: Props) {
         )}
       </div>
 
-      <SwarmReferenceModal
+      {
+        <SwarmReferenceModal
           isOpen={openSwarmModal}
           shouldCloseOnOverlayClick={false}
           referenceCode={reference}
           payload={payload}
           onRequestClose={() => setOpenSwarmModal(false)}
         />
+      }
     </>
   );
 }
