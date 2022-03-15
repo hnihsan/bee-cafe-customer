@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ReactJson from 'react-json-view'
+import dynamic from 'next/dynamic'
+// import ReactJson from 'react-json-view'
 
 
 import BaseModal from './BaseModal';
@@ -22,6 +23,7 @@ export default function SwarmReferenceModal({
   payload,
   onRequestClose,
 }: ModalProps) {
+  const ReactJson = dynamic(import('react-json-view'), { ssr: false });
   return (
     <BaseModal
       maxWidth={640}
@@ -47,10 +49,10 @@ export default function SwarmReferenceModal({
             <div className='w-full border rounded-xl h-24 mt-2'>
               <p className='break-words mx-3 my-3 text-lg font-bold'>{referenceCode}</p>
             </div>
-            {/* <div className='mt-5'>
+            <div className='mt-5'>
               <p className='mb-2'>Uploaded data to SWARM Preview :</p>
               <ReactJson src={payload} collapseStringsAfterLength={25} name={"payload"} collapsed={true} />
-            </div> */}
+            </div>
           </div>
         </BodyModal>
       </ContainerModal>

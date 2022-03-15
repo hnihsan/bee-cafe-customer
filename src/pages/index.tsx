@@ -2,7 +2,7 @@ import Img from '@components/Img/Img';
 import React, { useState } from 'react';
 import { FaBeer } from 'react-icons/fa';
 
-import formatRupiah from '@helpers/formatRupiah';
+import formatCurrency from '@helpers/formatCurrency';
 import ConfirmQtyModal from '@components/Modal/ConfirmQtyModal';
 import Receipt from '@parts/Receipt';
 type Props = {};
@@ -399,7 +399,7 @@ export default function Home({}: Props) {
 
                         <div className="meta">
                           <p className="mt-3 px-3 text-lg text-white">
-                            $ {formatRupiah(item?.price ?? 0)}
+                            $ {formatCurrency(item?.price)}
                           </p>
                         </div>
                       </div>

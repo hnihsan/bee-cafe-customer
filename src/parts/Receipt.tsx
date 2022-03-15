@@ -1,7 +1,7 @@
 import Img from '@components/Img/Img';
 import React, { useEffect, useRef, useState } from 'react';
 
-import formatRupiah from '@helpers/formatRupiah';
+import formatCurrency from '@helpers/formatCurrency';
 import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
 type Props = {
   orders: any,
@@ -26,7 +26,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
       total += order.item.price * order.qty;
     });
 
-    const tax = total * 0.1;
+    const tax = (total * 0.1).toFixed(2);
     const grandTotal = total + tax;
 
     setSummary({
@@ -77,7 +77,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
 
       <div
         ref={carts}
-        className="absolute bottom-24 right-10 bg-pink-50 w-64 rounded shadow-md overflow-auto no-scrollbar"
+        className="absolute bottom-24 right-10 bg-pink-50 w-64 rounded shadow-md overflow-auto no-scrollbar z-10"
         style={{ maxHeight: '75vh' }}
       >
         {isShowReceipt && (
@@ -103,10 +103,10 @@ function Receipt({ orders, customer, tableNo }: Props) {
                     <h3 className="text-sm">{order.item?.name ?? '-'}</h3>
                     <p className="text-xs">
                       {order.qty ?? 0} x ${' '}
-                      {formatRupiah(order.item?.price ?? 0)}
+                      {formatCurrency(order.item?.price)}
                     </p>
                     <p className="text-xs font-bold mt-5">
-                      $ {formatRupiah(order.item?.price * order.qty)}
+                      $ {formatCurrency((order.item?.price * order.qty).toString())}
                     </p>
                   </div>
                 </div>
@@ -116,16 +116,16 @@ function Receipt({ orders, customer, tableNo }: Props) {
             <div className="p-2 text-sm">
               <div className="flex justify-between">
                 <h3>Total</h3>
-                <p>$ {formatRupiah(summary?.total ?? 0)}</p>
+                <p>$ {formatCurrency(summary?.total?.toString())}</p>
               </div>
               <div className="flex justify-between">
                 <h3>Tax (10%)</h3>
-                <p>$ {formatRupiah(summary?.tax ?? 0)}</p>
+                <p>$ {formatCurrency(summary?.tax?.toString())}</p>
               </div>
               <div className="flex justify-between">
                 <h3>Grand Total</h3>
                 <p className="font-bold">
-                  $ {formatRupiah(summary?.grandTotal ?? 0)}
+                  $ {formatCurrency(summary?.grandTotal.toString())}
                 </p>
               </div>
             </div>
