@@ -1,6 +1,5 @@
 import Img from '@components/Img/Img';
 import React, { useState } from 'react';
-import { FaBeer } from 'react-icons/fa';
 
 import formatCurrency from '@helpers/formatCurrency';
 import ConfirmQtyModal from '@components/Modal/ConfirmQtyModal';
@@ -215,7 +214,7 @@ export default function Home({}: Props) {
                 data-tabs="tables"
                 onClick={handleTabSwitch}
               >
-                Choose Table <FaBeer className="text-blue-500" />
+                Choose Table
               </a>
             </li>
             <li

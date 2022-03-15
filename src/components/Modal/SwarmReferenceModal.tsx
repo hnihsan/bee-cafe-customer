@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
+import { FaCopy } from 'react-icons/fa';
 import dynamic from 'next/dynamic'
-// import ReactJson from 'react-json-view'
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 
 import BaseModal from './BaseModal';
@@ -23,7 +24,15 @@ export default function SwarmReferenceModal({
   payload,
   onRequestClose,
 }: ModalProps) {
+  const [copyBtn, setCopyBtn] = useState('Copy')
   const ReactJson = dynamic(import('react-json-view'), { ssr: false });
+  const handleCopy = () => {
+    setCopyBtn('Copied !')
+    setTimeout(
+      () => setCopyBtn('Copy'),
+      1000
+    );
+  }
   return (
     <BaseModal
       maxWidth={640}
@@ -48,6 +57,18 @@ export default function SwarmReferenceModal({
             <p className='text-center'>Send your Order Reference below to <a href="#cashier">Cashier</a> !</p>
             <div className='w-full border rounded-xl h-24 mt-2'>
               <p className='break-words mx-3 my-3 text-lg font-bold'>{referenceCode}</p>
+            </div>
+            <div className='w-full mt-2 flex justify-center'>
+              <CopyToClipboard
+                text={referenceCode}
+              >
+                <button
+                  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline inline-flex'
+                  onClick={handleCopy}
+                >
+                  <FaCopy className="text-white" /> &nbsp; {copyBtn}
+                </button>
+              </CopyToClipboard>
             </div>
             <div className='mt-5'>
               <p className='mb-2'>Uploaded data to SWARM Preview :</p>
