@@ -47,7 +47,7 @@ export default function Home({}: Props) {
           price: '8',
           image:
             'https://gateway-proxy-bee-4-0.gateway.ethswarm.org/bzz/fd13139e112ad218a0c6d11f77c8ae370e01f0f59a36a390206b01f0c409c9dd/',
-        }
+        },
       ],
     },
     {
@@ -275,7 +275,7 @@ export default function Home({}: Props) {
                   type="button"
                   onClick={handleSubmitCustomer}
                 >
-                  Let's go!
+                  Continue
                 </button>
               </div>
             </form>
@@ -359,7 +359,9 @@ export default function Home({}: Props) {
                     className="border rounded-md cursor-pointer hover:shadow-md relative"
                     onClick={() => {
                       setSelectedItem(item);
-                      setSelectedItemCategory(datas[selectedCurrentIndex].category);
+                      setSelectedItemCategory(
+                        datas[selectedCurrentIndex].category
+                      );
                       setIsModalOpen(true);
                     }}
                     key={index}
