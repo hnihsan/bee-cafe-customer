@@ -19,7 +19,6 @@ module.exports = withPlugins(
   {
     images: {
       domains: [
-        'images.unsplash.com',
         'gateway-proxy-bee-9-0.gateway.ethswarm.org',
         'gateway-proxy-bee-8-0.gateway.ethswarm.org',
         'gateway-proxy-bee-7-0.gateway.ethswarm.org',
