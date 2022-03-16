@@ -1,14 +1,14 @@
-import Img from '@components/Img/Img';
-import React, { useEffect, useRef, useState } from 'react';
-import { BeeDebug, Bee } from "@ethersphere/bee-js"
+import Img from "@components/Img/Img";
+import React, { useEffect, useRef, useState } from "react";
+import { BeeDebug, Bee } from "@ethersphere/bee-js";
 
-import formatCurrency from '@helpers/formatCurrency';
+import formatCurrency from "@helpers/formatCurrency";
 
 type Props = {
-  orders: any,
-  customer: string,
-  tableNo: Number | null,
-  onOrderSubmitted: (orderReference : string, payload : any) => void;
+  orders: any;
+  customer: string;
+  tableNo: Number | null;
+  onOrderSubmitted: (orderReference: string, payload: any) => void;
 };
 
 function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
@@ -23,12 +23,12 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
   const bee = new Bee(beeUrl);
 
   useEffect(() => {
-    let total = 0;
+    let total: any = 0;
     orders.forEach((order) => {
       total += order.item.price * order.qty;
     });
 
-    const tax = (total * 0.1);
+    const tax = total * 0.1;
     const grandTotal = total + tax;
 
     setSummary({
@@ -45,13 +45,18 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
       orders,
       ...summary,
       customer,
-      tableNo
+      tableNo,
     };
 
-    const ps = await beeDebug.getAllPostageBatch()
-    let usableStamps = ps.filter((stamp) => { return stamp.usable;});
+    const ps = await beeDebug.getAllPostageBatch();
+    let usableStamps = ps.filter((stamp) => {
+      return stamp.usable;
+    });
     let batchID = usableStamps[0].batchID;
-    const { reference } = await bee.uploadData(batchID, JSON.stringify(orderSummary));
+    const { reference } = await bee.uploadData(
+      batchID,
+      JSON.stringify(orderSummary)
+    );
     setOrderLoading(false);
     onOrderSubmitted(reference, orderSummary);
     console.log(orderSummary);
@@ -64,9 +69,9 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
   }
 
   useEffect(() => {
-    window.addEventListener('mousedown', clickOutside);
+    window.addEventListener("mousedown", clickOutside);
     return () => {
-      window.removeEventListener('mousedown', clickOutside);
+      window.removeEventListener("mousedown", clickOutside);
     };
   }, []);
 
@@ -74,7 +79,7 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
     <>
       <div
         className="absolute bottom-10 right-10 rounded animate-pulse"
-        style={{ maxHeight: '75vh' }}
+        style={{ maxHeight: "75vh" }}
       >
         <button
           className="text-black px-4 w-auto h-12 bg-gray-100 rounded-full hover:bg-gray-300 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
@@ -87,7 +92,7 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
       <div
         ref={carts}
         className="absolute bottom-24 right-10 bg-pink-50 w-64 rounded shadow-md overflow-auto no-scrollbar z-10"
-        style={{ maxHeight: '75vh' }}
+        style={{ maxHeight: "75vh" }}
       >
         {isShowReceipt && (
           <>
@@ -103,19 +108,21 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
                   <Img
                     height={75}
                     width={75}
-                    alt={'item'}
+                    alt={"item"}
                     classname="object-cover rounded-md"
-                    layout={'fixed'}
+                    layout={"fixed"}
                     src={order?.item?.image}
                   />
                   <div className="detail">
-                    <h3 className="text-sm">{order.item?.name ?? '-'}</h3>
+                    <h3 className="text-sm">{order.item?.name ?? "-"}</h3>
                     <p className="text-xs">
-                      {order.qty ?? 0} x ${' '}
-                      {formatCurrency(order.item?.price)}
+                      {order.qty ?? 0} x $ {formatCurrency(order.item?.price)}
                     </p>
                     <p className="text-xs font-bold mt-5">
-                      $ {formatCurrency((order.item?.price * order.qty).toString())}
+                      ${" "}
+                      {formatCurrency(
+                        (order.item?.price * order.qty).toString()
+                      )}
                     </p>
                   </div>
                 </div>
@@ -141,10 +148,13 @@ function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
 
             <div className="mt-3">
               <button
-                className={"border rounded w-full py-2 text-white " + (orderLoading ? 'bg-gray-500' : 'bg-bee-main')}
+                className={
+                  "border rounded w-full py-2 text-white " +
+                  (orderLoading ? "bg-gray-500" : "bg-bee-main")
+                }
                 onClick={handlerSubmit}
               >
-                { orderLoading ? 'PROCESSING ..' : 'ORDER'}
+                {orderLoading ? "PROCESSING .." : "ORDER"}
               </button>
             </div>
           </>
