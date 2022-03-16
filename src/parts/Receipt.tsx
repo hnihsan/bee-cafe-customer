@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import formatCurrency from '@helpers/formatCurrency';
 import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
 type Props = {
-  orders: any,
-  customer: string,
-  tableNo: Number | null
+  orders: any;
+  customer: string;
+  tableNo: Number | null;
 };
 
 function Receipt({ orders, customer, tableNo }: Props) {
@@ -17,18 +17,19 @@ function Receipt({ orders, customer, tableNo }: Props) {
   const [openSwarmModal, setOpenSwarmModal] = useState(false);
 
   useEffect(() => {
-    setReference('SampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuh')
-  })
+    setReference(
+      'SampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuhSampleReferenceCodeHereDuh'
+    );
+  });
 
   useEffect(() => {
-    let total = 0;
+    let total: any = 0;
     orders.forEach((order) => {
       total += order.item.price * order.qty;
     });
 
     const tax = (total * 0.1).toFixed(2);
-    const grandTotal = total + tax;
-
+    const grandTotal = parseFloat(total) + parseFloat(tax);
     setSummary({
       total,
       tax,
@@ -41,11 +42,10 @@ function Receipt({ orders, customer, tableNo }: Props) {
       orders,
       ...summary,
       customer,
-      tableNo
+      tableNo,
     };
     setPayload(orderSummary);
     setOpenSwarmModal(true);
-    console.log(orderSummary);
   };
 
   const carts = useRef(null);
@@ -102,11 +102,13 @@ function Receipt({ orders, customer, tableNo }: Props) {
                   <div className="detail">
                     <h3 className="text-sm">{order.item?.name ?? '-'}</h3>
                     <p className="text-xs">
-                      {order.qty ?? 0} x ${' '}
-                      {formatCurrency(order.item?.price)}
+                      {order.qty ?? 0} x $ {formatCurrency(order.item?.price)}
                     </p>
                     <p className="text-xs font-bold mt-5">
-                      $ {formatCurrency((order.item?.price * order.qty).toString())}
+                      ${' '}
+                      {formatCurrency(
+                        (order.item?.price * order.qty).toString()
+                      )}
                     </p>
                   </div>
                 </div>
