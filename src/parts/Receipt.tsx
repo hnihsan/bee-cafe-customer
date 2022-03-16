@@ -32,7 +32,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
       total += order.item.price * order.qty;
     });
 
-    const tax = (total * 0.1).toFixed(2);
+    const tax = (total * 0.1);
     const grandTotal = total + tax;
 
     setSummary({
