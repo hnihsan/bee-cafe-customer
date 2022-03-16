@@ -3,25 +3,21 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BeeDebug, Bee } from "@ethersphere/bee-js"
 
 import formatCurrency from '@helpers/formatCurrency';
-import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
+
 type Props = {
   orders: any,
   customer: string,
-  tableNo: Number | null
+  tableNo: Number | null,
+  onOrderSubmitted: (orderReference : string, payload : any) => void;
 };
 
-function Receipt({ orders, customer, tableNo }: Props) {
+function Receipt({ orders, customer, tableNo, onOrderSubmitted }: Props) {
   const [summary, setSummary] = useState(null);
   const [isShowReceipt, setIsShowReceipt] = useState(false);
-  const [payload, setPayload] = useState([]);
-  const [reference, setReference] = useState('');
-  const [openSwarmModal, setOpenSwarmModal] = useState(false);
   const [orderLoading, setOrderLoading] = useState(false);
 
   const beeUrl = "http://localhost:1633";
   const beeDebugUrl = "http://localhost:1635";
-  const POSTAGE_STAMPS_AMOUNT = 10000
-  const POSTAGE_STAMPS_DEPTH = 17
 
   const beeDebug = new BeeDebug(beeDebugUrl);
   const bee = new Bee(beeUrl);
@@ -56,11 +52,8 @@ function Receipt({ orders, customer, tableNo }: Props) {
     let usableStamps = ps.filter((stamp) => { return stamp.usable;});
     let batchID = usableStamps[0].batchID;
     const { reference } = await bee.uploadData(batchID, JSON.stringify(orderSummary));
-    setReference(reference);
     setOrderLoading(false);
-
-    setPayload(orderSummary);
-    setOpenSwarmModal(true);
+    onOrderSubmitted(reference, orderSummary);
     console.log(orderSummary);
   };
 
@@ -157,16 +150,6 @@ function Receipt({ orders, customer, tableNo }: Props) {
           </>
         )}
       </div>
-
-      {
-        <SwarmReferenceModal
-          isOpen={openSwarmModal}
-          shouldCloseOnOverlayClick={false}
-          referenceCode={reference}
-          payload={payload}
-          onRequestClose={() => setOpenSwarmModal(false)}
-        />
-      }
     </>
   );
 }

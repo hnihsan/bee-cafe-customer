@@ -4,6 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 import formatCurrency from '@helpers/formatCurrency';
 import ConfirmQtyModal from '@components/Modal/ConfirmQtyModal';
 import Receipt from '@parts/Receipt';
+import SwarmReferenceModal from '@components/Modal/SwarmReferenceModal';
 type Props = {};
 
 export default function Home({}: Props) {
@@ -141,6 +142,9 @@ export default function Home({}: Props) {
   const [orders, setOrders] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedTab, setSelectedTab] = useState('customer');
+  const [payload, setPayload] = useState([]);
+  const [orderReference, setOrderReference] = useState('');
+  const [openSwarmModal, setOpenSwarmModal] = useState(false);
 
   const handleConfirmItem = (item: any) => {
     const isExist = orders.filter((order) => {
@@ -431,8 +435,23 @@ export default function Home({}: Props) {
           customer={customerName}
           tableNo={selectedTable}
           orders={orders}
+          onOrderSubmitted={(orderReference, payload) => {
+            setOrderReference(orderReference);
+            setPayload(payload);
+            setOpenSwarmModal(true);
+            setOrders([]);
+          }}
         />
       )}
+
+
+      <SwarmReferenceModal
+        isOpen={openSwarmModal}
+        shouldCloseOnOverlayClick={false}
+        referenceCode={orderReference}
+        payload={payload}
+        onRequestClose={() => setOpenSwarmModal(false)}
+      />
     </div>
   );
 }
