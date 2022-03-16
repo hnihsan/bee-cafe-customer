@@ -45,7 +45,7 @@ function Receipt({ orders, customer, tableNo }: Props) {
   const handlerSubmit = async () => {
     setOrderLoading(true);
     let orderSummary = {
-      id: Date.now(),
+      id: Date.now().toString(),
       orders,
       ...summary,
       customer,
